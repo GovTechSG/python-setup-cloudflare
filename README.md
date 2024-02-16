@@ -17,6 +17,6 @@ Run this command in terminal as a `non-root` user. For `virtualenv`s or poetry e
 
 > **If you want to install `aider-chat`**, the open source AI coding assistant that edits code for you, please use the following script instead:
 
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/GovTechSG/python-setup-cloudflare/master/install-aider-osx.sh)"
-```
+> ```bash
+> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/GovTechSG/python-setup-cloudflare/master/install-aider-osx.sh)"
+> ```
