@@ -2,24 +2,11 @@
 
 CLOUDFLARE_CA_URL="https://developers.cloudflare.com/cloudflare-one/static/Cloudflare_CA.pem"
 
-cat << 'EOF'
-=============================================================================
-        _     _                         _                                    
-   __ _(_) __| | ___ _ __      ___  ___| |_ _   _ _ __         __ _  ___ ___ 
-  / _` | |/ _` |/ _ \ '__|____/ __|/ _ \ __| | | | '_ \ _____ / _` |/ __/ __|
- | (_| | | (_| |  __/ | |_____\__ \  __/ |_| |_| | |_) |_____| (_| | (_| (__ 
-  \__,_|_|\__,_|\___|_|       |___/\___|\__|\__,_| .__/       \__, |\___\___|
-                                                 |_|          |___/          
-=============================================================================
-EOF
-
 cat << EOF
-This tool allows you to configure your macOS environment with Cloudflare
-to make API requests to Azure GCC. It will:
+This tool allows you to configure your macOS environment with Cloudflare for Python.
+It will:
 $(echo -e "\033[31m")
-1. Configure your Python Environment to trust the *Cloudflare Root CA*.
-2. Help you setup the necessary environment variables to use the Azure OpenAI
-   from within GCC.
+Configure your Python Environment to trust the *Cloudflare Root CA*.
 $(echo -e "\033[0m")
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -28,15 +15,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+By proceeding, you are agreeing with the terms of use.
+
 EOF
-
-read -p "Do you agree? (y/n) [default: n]: " response
-response=$(echo "$response" | tr '[:upper:]' '[:lower:]')
-
-if [[ "$response" != "y" && "$response" != "yes" ]]; then
-    echo "Exiting. You did not agree." >&2
-    exit 1
-fi
 
 read -p "Please turn off Cloudflare now. Proceed with Installation? (y/n) [default: n]: " response
 response=$(echo "$response" | tr '[:upper:]' '[:lower:]')
@@ -57,16 +39,16 @@ fi
 
 # ============= END OF CHECKS ==============
 
-echo "[aider-install] Starting"
+echo "[certifi-install] Starting"
 
-if ! pip install -q --upgrade --user certifi aider-chat; then
-    echo "[aider-install] Failed to install aider-chat. Please check the error message above for more details." >&2
+if ! pip install -q --upgrade --user certifi; then
+    echo "[certifi-install] Failed to install certifi. Please check the error message above for more details." >&2
     exit 1
 fi
 
-echo "[aider-install] Completed successfully"
+echo "[certifi-install] Completed successfully"
 
-# ============= END OF AIDER INSTALLATION ==============
+# ============= END OF CERTIFI INSTALLATION ==============
 
 PEM_PATH=$(python -m certifi)
 
@@ -130,12 +112,3 @@ for file in "${CONFIG_FILES[@]}"; do
 done
 
 # ============= END OF CLOUDFLARE COMPATIBILITY ==============
-
-read -p "Do you want to configure Azure OpenAI? (y/n) [default: n]: " response
-response=$(echo "$response" | tr '[:upper:]' '[:lower:]')
-
-if [[ "$response" != "y" && "$response" != "yes" ]]; then
-    echo "Exiting. You did not agree." >&2
-    exit 1
-fi
-
