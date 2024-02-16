@@ -4,7 +4,7 @@ if ! /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/GovTec
     exit 1
 fi
 
-read -p "Install `aider-chat` Now? (y/n) [default: n]: " response
+read -p "Install aider-chat Now? (y/n) [default: n]: " response
 response=$(echo "$response" | tr '[:upper:]' '[:lower:]')
 
 if [[ "$response" != "y" && "$response" != "yes" ]]; then
