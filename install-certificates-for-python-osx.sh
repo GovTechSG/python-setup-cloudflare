@@ -32,9 +32,13 @@ fi
 # ============= END OF DISCLAIMERS ==============
 
 if [[ -n "$VIRTUAL_ENV" ]]; then
-    echo "Please install install and configure `aider` outside of your virtualenv."  >&2
-    echo "Start a new shell in your Terminal/iTerm App" >&2
-    exit 1
+    read -p "Are you sure you want to configure this virtualenv? (y/n) [default: n]: " response
+    response=$(echo "$response" | tr '[:upper:]' '[:lower:]')
+
+    if [[ "$response" != "y" && "$response" != "yes" ]]; then
+        echo "Exiting." >&2
+        exit 1
+    fi
 fi
 
 # ============= END OF CHECKS ==============
