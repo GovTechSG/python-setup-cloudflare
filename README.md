@@ -5,6 +5,8 @@ Scripts and instructions for setting up any Python project that requires http re
 
 ### macOS
 
+Run this command in terminal as a `non-root` user.
+
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/GovTechSG/python-setup-cloudflare/master/install-certificates-for-python-osx.sh)"
 ```
