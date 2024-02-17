@@ -45,7 +45,7 @@ fi
 
 echo "[certifi-install] Starting"
 
-if ! pip install -q --upgrade --user certifi; then
+if ! pip install -q --upgrade certifi; then
     echo "[certifi-install] Failed to install certifi. Please check the error message above for more details." >&2
     exit 1
 fi
