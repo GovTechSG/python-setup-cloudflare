@@ -63,9 +63,6 @@ if ! curl --fail -s -o /tmp/Cloudflare_CA.pem $CLOUDFLARE_CA_URL > /dev/null; th
     exit 1
 fi
 
-echo -e "# Cloudflare Root CA\n$(cat input)" > input
-
-
 CLOUDFLARE_CA_SIGNATURE=$(sed -n '2p' /tmp/Cloudflare_CA.pem)
 
 if ! grep -q "$CLOUDFLARE_CA_SIGNATURE" "$PEM_PATH"; then
