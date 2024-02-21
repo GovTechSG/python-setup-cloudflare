@@ -45,7 +45,7 @@ fi
 
 echo "[certifi-install] Starting"
 
-if ! pip install -q --upgrade certifi; then
+if ! python3 -m pip install -q --upgrade certifi; then
     echo "[certifi-install] Failed to install certifi. Please check the error message above for more details." >&2
     exit 1
 fi
@@ -54,7 +54,7 @@ echo "[certifi-install] Completed successfully"
 
 # ============= END OF CERTIFI INSTALLATION ==============
 
-PEM_PATH=$(python -m certifi)
+PEM_PATH=$(python3 -m certifi)
 
 echo "[Cloudflare] Downloading Root CA"
 
