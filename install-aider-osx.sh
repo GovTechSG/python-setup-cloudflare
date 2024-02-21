@@ -14,7 +14,7 @@ fi
 
 echo "[aider-install] Starting"
 
-if ! pip install -q --upgrade --user aider-chat; then
+if ! python3 -m pip install -q --upgrade --user aider-chat; then
     echo "[aider-install] Failed to install aider-chat. Please check the error message above for more details." >&2
     exit 1
 fi
